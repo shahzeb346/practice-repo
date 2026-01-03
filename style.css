@@ -34,3 +34,14 @@
       margin: 10px;
     }
 
+    #box2{
+      width: 200px;
+      height: 200px;
+      border: 2px solid black;
+      background-color: aqua;
+    }
+.keyword{
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+}

@@ -7,7 +7,7 @@
     <title>Dom manipulation</title>
 </head>
 <body>
-    <h1 id="head1">selecting elelment by id</h1>
+    <!-- <h1 id="head1">selecting elelment by id</h1>
     <h2 class="classHead">selecting elelment by class name</h2>
     <p>hello prargraph by tag name</p>
     <p class="textContent">textContent properties</p>
@@ -17,16 +17,16 @@
     <p id="classlist">manipulating style using classlist</p>
 
     <!-- addding element and navigation element -->
-    <div class="grandparent">
+    <!-- <div class="grandparent">
         <div class="parent">
             <p class="child0">child 1</p>
             <p class="child1">child 2</p>
             <p class="child2">child 3</p>
         </div>
-    </div>
+    </div> -->
 
     <!-- practice question tasks -->
-     <div class="parent">
+     <!-- <div class="parent">
       <h1 id="mainTitle">DOM Practice Tasks</h1>
 
   <p class="info">Paragraph One</p>
@@ -42,9 +42,58 @@
     <span>First Span</span>
     <span>Second Span</span>
   </div>
+  <button id="btn">Click Me</button></div>  -->
 
-  <button id="btn">Click Me</button></div>
+  <!-- DOM Events inline -->
+   <button onclick="console.log('button was clicked')">event trigger</button>
+   <button ondblclick="console.log('double was clicked')">event doubletrigger</button>
+   <div id="box2" onmouseover="console.log('mouse was enterd')" onmouseout="console.log('mouse out')">moucse enter</div>
+   <button onmousedown="console.log('Mouse button pressed')">mouse down</button>
+   <button onmouseup="console.log('mouse button released')"> mouse up</button>
 
+   <!-- event listener -->
+    <h2>event listener</h2>
+    <button class="listenerBtn">Click</button>
+    <!-- event with element -->
+     <p>This is a prargraph</p>
+<!-- this keyword -->
+ <h2>this keyword</h2>
+ <button id="thisBtn">this keyword</button>
+
+ <!-- keyboard events -->
+  <h2>keyboard events</h2>
+  <input id="input" type="text" placeholder="keyboard events">
+  <!-- form events -->
+   <h2>form events</h2>
+   <form action="">
+    <input type="text" placeholder="username">
+    <input type="password" placeholder="enter password">
+    <button>Register Now</button>
+   </form>
+
+   <!-- change and input events -->
+    <h2>change and input events</h2>
+    <input type="text" placeholder="see change events" name="user" id="change">
+
+    <!-- practice question dom events -->
+    <h2>Dom events practice</h2>
+     <button id="domBtn">dom events</button>
+
+     <!-- multiple button -->
+      <h2>multiple button triggered</h2>
+      <button class="btn">clicked</button>
+      <button class="btn">clicked</button>
+      <button class="btn">clicked</button>
+
+      <!--this keyword + element -->
+      <h2>this keyword</h2>
+      <div class="keyword"></div>
+
+      <!-- Q 4 task -->
+       <button class="dis">click</button>
+
+       <!-- task no 5 -->
+        <input type="text" id="key" placeholder="enter key code" name="alpha">
 
     <script src="dom.js"></script>
 </body>
