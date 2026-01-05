@@ -261,6 +261,42 @@ keyCode.addEventListener("keypress", function(e){
     if(e.key === "Enter"){
         alert("Submitted");
     }
+});
+
+// Q7
+let input3 = document.querySelector("#tasklive");
+input3.addEventListener("input", function(e){
+let h1 = document.querySelector("#preview");
+h1.innerHTML = e.target.value;
+
 })
+
+// Q8
+input3.addEventListener("change", function(e){
+    console.log(e.target.value);
+    console.log("Done typing");
+
+})
+// Qno 9
+let form2 = document.querySelector("#form2");
+form2.addEventListener("submit", function(e){
+    e.preventDefault();
+    let user = e.target.elements.username.value;
+    let pass = e.target.elements.password.value;
+    console.log(user, pass)
+})
+
+
+
+// Q10
+form2.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(e.target.elements.username.value == ""){
+        console.log("please fill out the username field");
+        
+    }
+})
+
+
 
 
