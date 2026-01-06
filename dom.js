@@ -147,156 +147,215 @@
 // // task no 8
 // let remove = ul.removeChild(banana);
 
-// day 9 Dom events
-let listenerBtn = document.querySelector(".listenerBtn");
-listenerBtn.addEventListener("click", () =>{
-console.log("button is clicked");
-let sum = (a,b)=> a+b;
-console.log(`sum of event = ${sum(10,10)}`)
-})
-// event with element
-let p = document.querySelector("p");
-p.addEventListener("click", function(){
-    console.log("element is clicked")
-})
-// this with event listener
-let thisBtn = document.querySelector("#thisBtn");
-thisBtn.addEventListener("click", function(){
-    console.log(this.innerText);
-    this.style.backgroundColor = "blue";
-});
-// keyboard events
-let input = document.querySelector("#input");
-input.addEventListener("keydown", function(){
-    console.log("keydown");
-})
-input.addEventListener("keyup", function(){
-    console.log("keyup");
-})
-input.addEventListener("keypress", function(){
-    console.log("keypress");
-});
-
-// form events
-let form = document.querySelector("form");
-// form.addEventListener("submit", function(event){
-//     event.preventDefault();
-//     console.log("form was submitted")
-//     form.reset(" ")
+// // day 9 Dom events
+// let listenerBtn = document.querySelector(".listenerBtn");
+// listenerBtn.addEventListener("click", () =>{
+// console.log("button is clicked");
+// let sum = (a,b)=> a+b;
+// console.log(`sum of event = ${sum(10,10)}`)
+// })
+// // event with element
+// let p = document.querySelector("p");
+// p.addEventListener("click", function(){
+//     console.log("element is clicked")
+// })
+// // this with event listener
+// let thisBtn = document.querySelector("#thisBtn");
+// thisBtn.addEventListener("click", function(){
+//     console.log(this.innerText);
+//     this.style.backgroundColor = "blue";
+// });
+// // keyboard events
+// let input = document.querySelector("#input");
+// input.addEventListener("keydown", function(){
+//     console.log("keydown");
+// })
+// input.addEventListener("keyup", function(){
+//     console.log("keyup");
+// })
+// input.addEventListener("keypress", function(){
+//     console.log("keypress");
 // });
 
-// extract form data
-form.addEventListener("submit", function(e){
-    e.preventDefault();
-    let user = this.elements[0].value;
-    let pass = this.elements[1].value;
-    console.log(`user data ${user}`);
-    console.log(`password data ${pass}`);
+// // form events
+// let form = document.querySelector("form");
+// // form.addEventListener("submit", function(event){
+// //     event.preventDefault();
+// //     console.log("form was submitted")
+// //     form.reset(" ")
+// // });
 
-});
+// // extract form data
+// form.addEventListener("submit", function(e){
+//     e.preventDefault();
+//     let user = this.elements[0].value;
+//     let pass = this.elements[1].value;
+//     console.log(`user data ${user}`);
+//     console.log(`password data ${pass}`);
 
-// change events
-form.addEventListener("change", function(e){
-    e.preventDefault();
-    let user = this.elements[0].value;
-    let pass = this.elements[1].value;
-    console.log(user, pass)
-})
+// });
 
-// difference between change and input
-let input2 = document.querySelector("#change");
-input2.addEventListener("input", (e) => {
-    e.preventDefault();
-    console.log(e.target.value)
-  console.log("typing...");
-});
+// // change events
+// form.addEventListener("change", function(e){
+//     e.preventDefault();
+//     let user = this.elements[0].value;
+//     let pass = this.elements[1].value;
+//     console.log(user, pass)
+// })
 
-input2.addEventListener("change", (e) => {
-    e.preventDefault();
-    console.log(e.target.value)
-  console.log("finished typing");
-});
+// // difference between change and input
+// let input2 = document.querySelector("#change");
+// input2.addEventListener("input", (e) => {
+//     e.preventDefault();
+//     console.log(e.target.value)
+//   console.log("typing...");
+// });
+
+// input2.addEventListener("change", (e) => {
+//     e.preventDefault();
+//     console.log(e.target.value)
+//   console.log("finished typing");
+// });
+
+// // practice question
+// let domBtn = document.querySelector("#domBtn");
+// domBtn.addEventListener("click",function(){
+    
+//     this.innerText = "Clicked";
+//     this.style.backgroundColor = "blue"
+//     console.log("style changed");
+// })
+// // Q2
+// let btn = document.querySelectorAll(".btn");
+// btn.forEach(function(button){
+//     button.addEventListener("click", function(e){
+//     if(e.target.classList.contains("btn")){
+//         console.log(e.target.innerText)
+//     }
+// })
+// })
+
+// // q3 event with element + this
+// let keyword = document.querySelector(".keyword");
+// keyword.addEventListener("mouseenter", function(){
+//     this.style.backgroundColor = "green";
+// })
+// keyword.addEventListener("mouseout", function(){
+//     this.style.backgroundColor = "gray";
+// })
+
+// // q4
+// let disable = document.querySelector(".dis");
+// disable.addEventListener("click", function(){
+//     this.classList.add("disable");
+//     this.innerText = "Disabled!"
+// })
+// // Q5
+// let keyCode = document.querySelector("#key");
+// keyCode.addEventListener("keydown", function(e){
+//         e.target.value;
+//         console.log("typing.......")
+// })
+// // Q6
+// keyCode.addEventListener("keypress", function(e){
+//     if(e.key === "Enter"){
+//         alert("Submitted");
+//     }
+// });
+
+// // Q7
+// let input3 = document.querySelector("#tasklive");
+// input3.addEventListener("input", function(e){
+// let h1 = document.querySelector("#preview");
+// h1.innerHTML = e.target.value;
+
+// })
+
+// // Q8
+// input3.addEventListener("change", function(e){
+//     console.log(e.target.value);
+//     console.log("Done typing");
+
+// })
+// // Qno 9
+// let form2 = document.querySelector("#form2");
+// form2.addEventListener("submit", function(e){
+//     e.preventDefault();
+//     let user = e.target.elements.username.value;
+//     let pass = e.target.elements.password.value;
+//     console.log(user, pass)
+// })
+
+// // Q10
+// form2.addEventListener("submit", function(e){
+//     e.preventDefault();
+//     if(e.target.elements.username.value == ""){
+//         console.log("please fill out the username field");
+        
+//     }
+// })
+
+
+// day 11 event bubbling
+// let parent = document.querySelector(".parent");
+// let child = document.querySelector(".child");
+// child.addEventListener("click", function (e){
+//     console.log("child clicked",e.target);
+//     console.log("parent click",e.currentTarget);
+// })
+
+// parent.addEventListener("click", function(){
+//     console.log("parent clicked")
+// })
+
+// event delegation
+// let delegation = document.querySelectorAll(".delegation");
+// delegation.forEach((btn) => {
+//     btn.addEventListener("click", function(e){
+//         console.log("every button click",e.target, e.currentTarget)
+//         console.log(e.target.innerText);
+//     })
+// });
+
+// todo app
+// let input = document.querySelector("input");
+// let todo = document.querySelector(".todo");
+// let addBtn = document.querySelector(".addBtn");
+
+// addBtn.addEventListener("click", function(){
+//     let task = input.value;
+//     if(task == "") return;
+
+//     let li = document.createElement("li");
+//     li.classList.add("item");
+//     li.innerText = task;
+//     li.style.listStyle = "none";
+//     todo.appendChild(li);
+
+//     input.value = "";
+// })
 
 // practice question
-let domBtn = document.querySelector("#domBtn");
-domBtn.addEventListener("click",function(){
+let input = document.querySelector("#taskInput");
+let addBtn = document.querySelector("#addTaskBtn");
+let todolist = document.querySelector("#taskList");
+addBtn.addEventListener("click", function(){
+    let task = input.value;
+    if(task === "") return;
     
-    this.innerText = "Clicked";
-    this.style.backgroundColor = "blue"
-    console.log("style changed");
-})
-// Q2
-let btn = document.querySelectorAll(".btn");
-btn.forEach(function(button){
-    button.addEventListener("click", function(e){
-    if(e.target.classList.contains("btn")){
-        console.log(e.target.innerText)
-    }
-})
-})
-
-// q3 event with element + this
-let keyword = document.querySelector(".keyword");
-keyword.addEventListener("mouseenter", function(){
-    this.style.backgroundColor = "green";
-})
-keyword.addEventListener("mouseout", function(){
-    this.style.backgroundColor = "gray";
-})
-
-// q4
-let disable = document.querySelector(".dis");
-disable.addEventListener("click", function(){
-    this.classList.add("disable");
-    this.innerText = "Disabled!"
-})
-// Q5
-let keyCode = document.querySelector("#key");
-keyCode.addEventListener("keydown", function(e){
-        e.target.value;
-        console.log("typing.......")
-})
-// Q6
-keyCode.addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        alert("Submitted");
-    }
+    let li = document.createElement("li");
+    let deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.classList.add("delete");
+    li.style.listStyle = "none";
+    li.innerText = task + " ";
+    li.appendChild(deleteBtn);
+    todolist.appendChild(li);
+    input.value= "";
 });
-
-// Q7
-let input3 = document.querySelector("#tasklive");
-input3.addEventListener("input", function(e){
-let h1 = document.querySelector("#preview");
-h1.innerHTML = e.target.value;
-
-})
-
-// Q8
-input3.addEventListener("change", function(e){
-    console.log(e.target.value);
-    console.log("Done typing");
-
-})
-// Qno 9
-let form2 = document.querySelector("#form2");
-form2.addEventListener("submit", function(e){
-    e.preventDefault();
-    let user = e.target.elements.username.value;
-    let pass = e.target.elements.password.value;
-    console.log(user, pass)
-})
-
-
-
-// Q10
-form2.addEventListener("submit", function(e){
-    e.preventDefault();
-    if(e.target.elements.username.value == ""){
-        console.log("please fill out the username field");
-        
-    }
-})
-
-
-
+todolist.addEventListener("click", function(event){
+        if(event.target.classList.contains("delete")){
+            event.target.parentElement.remove();
+        }
+    })
 
