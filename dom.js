@@ -336,26 +336,316 @@
 // })
 
 // practice question
-let input = document.querySelector("#taskInput");
-let addBtn = document.querySelector("#addTaskBtn");
-let todolist = document.querySelector("#taskList");
-addBtn.addEventListener("click", function(){
-    let task = input.value;
-    if(task === "") return;
+// let input = document.querySelector("#taskInput");
+// let addBtn = document.querySelector("#addTaskBtn");
+// let todolist = document.querySelector("#taskList");
+// addBtn.addEventListener("click", function(){
+//     let task = input.value;
+//     if(task === "") return;
     
-    let li = document.createElement("li");
-    let deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete";
-    deleteBtn.classList.add("delete");
-    li.style.listStyle = "none";
-    li.innerText = task + " ";
-    li.appendChild(deleteBtn);
-    todolist.appendChild(li);
-    input.value= "";
-});
-todolist.addEventListener("click", function(event){
-        if(event.target.classList.contains("delete")){
-            event.target.parentElement.remove();
+//     let li = document.createElement("li");
+//     let deleteBtn = document.createElement("button");
+//     deleteBtn.innerText = "Delete";
+//     deleteBtn.classList.add("delete");
+//     li.style.listStyle = "none";
+//     li.innerText = task + " ";
+//     li.appendChild(deleteBtn);
+//     todolist.appendChild(li);
+//     input.value= "";
+// });
+// todolist.addEventListener("click", function(event){
+//         if(event.target.classList.contains("delete")){
+//             event.target.parentElement.remove();
+//         }
+//     })
+
+
+day 12 call Stack
+function greet(){
+    console.log("hello greet")
+}
+function demo(){
+    greet();
+}
+demo()
+
+// visualizing the callStack
+function one(){
+    return 1;
+}
+function two(){
+    return one() + one();
+}
+function three(){
+    let ans = two()+ one();
+    console.log(ans)
+}
+three();
+
+// breakpoint
+function add(a,b){
+    debugger;
+    return a +b;
+
+}
+
+function calculate(){
+    add(3,3);
+}
+calculate();
+
+javascript single threaded 
+function thread(){
+    while(true) {}
+}
+thread()
+console.log("Done");
+
+callback hell
+
+let h2 = document.querySelector("h2");
+function colorChange(color, delay,nextcolor){
+    setTimeout(() => {
+        h2.style.color = color;
+        if(nextcolor)  nextcolor();
+    }, delay);
+}
+
+colorChange("orange",1000,()=>{
+    colorChange("red",1000,()=>{
+        colorChange("green",1000,()=>{
+            colorChange("blue",1000,()=>{
+                colorChange("purple",1000,()=>{
+                   colorChange("gray",1000,()=>{
+
+    })
+    })
+    })
+    })
+    })
+})
+
+// Promises
+function savDB(data,success,failure){
+    let internetSpeed= Math.floor(Math.random()*10)+1;
+    if(internetSpeed >4){
+        success(data);
+    }else{
+        failure(data);
+    }
+}
+
+savDB("apna college",
+    ()=>{
+        console.log("data is saved successfully")
+    },
+    ()=>{
+        console.log("no internet connection please retry");
+    },
+    
+);
+
+promises with chaining and result in promises
+function savDB(data){
+    return new Promise((resolve, reject)=>{
+        let internetSpeed = Math.floor(Math.random()*10)+1;
+        if(internetSpeed>4){
+            resolve(data);
+        }else{
+            reject(data);
         }
     })
+}
+
+savDB("apna college")
+.then((result)=>{
+    console.log("data saved!");
+    console.log("result of promiese",result);
+    return savDB("shahzeb");
+})
+.then((result)=>{
+    console.log("second data saved!");
+    console.log("result of promiese",result);
+    return savDB("shradha");
+})
+.then((result)=>{
+    console.log("third data saved!");
+    console.log("result of promiese",result);
+})
+.catch((error)=>{
+    console.log("promises is rejected");
+    console.log("error of promiese",error);
+})
+
+// promises to our callback hell
+let h2 = document.querySelector("h2")
+function colorChange(color, delay){
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            h2.style.color = color;
+            resolve();
+        }, delay);
+    })
+}
+
+colorChange("red",1000)
+.then(()=>{
+    console.log("red color was complete")
+    return colorChange("green",1000);
+})
+.then(()=>{
+     console.log("green color was complete")
+    return colorChange("blue",1000);
+})
+.then(()=>{
+     console.log("blue color was complete")
+    return colorChange("yellow",1000)
+})
+.then(()=>{
+     console.log("yellow color was completed")
+    
+})
+.catch((error)=>{
+    console.log(error)
+})
+
+// practice question
+function first() {
+    console.log("First function started");
+    second();
+    console.log("First function ended");
+}
+
+function second() {
+    console.log("Second function started");
+    // debugger;
+    third();
+    console.log("Second function ended");
+}
+
+function third() {
+    debugger;
+    console.log("Third function executing");
+}
+
+first();
+
+callback hell
+function getUser(id, callback) {
+    setTimeout(() => {
+        console.log("User fetched:", id);
+        callback({ id: id, name: "Shah Zeb" });
+    }, 1000);
+}
+
+function getPosts(userId, callback) {
+    setTimeout(() => {
+        console.log("Posts fetched for user:", userId);
+        callback(["Post1", "Post2", "Post3"]);
+    }, 1000);
+}
+
+function getComments(post, callback) {
+    setTimeout(() => {
+        console.log(`Comments for ${post}: ["Nice!", "Great!"]`);
+        callback();
+    }, 1000);
+}
+
+// Nested callback hell
+getUser(1, (user) => {
+    getPosts(user.id, (posts) => {
+        getComments(posts[0], () => {
+            console.log("All tasks completed!");
+        });
+    });
+});
+
+function getUser(id,callback){
+    setTimeout(() => {
+    console.log("fetched id ",id)
+    callback({id: id, name:"shahzeb"})
+    }, 1000);
+}
+
+function getPost(userid,callback){
+    setTimeout(() => {
+    console.log("post fetched for user",userid)
+    callback(["post1","post2","post3"])
+    }, 1000);
+}
+function getComment(post,callback){
+    setTimeout(() => {
+    console.log(`comment for ${post}:["nice","great"]`)
+    callback()
+    }, 1000);
+}
+
+// nested callback hell
+getUser(1,(user)=>{
+    getPost(user.id, (posts)=>{
+        getComment(posts[0],()=>{
+            console.log("callback hell is completed");
+        })
+    })
+})
+
+
+// promises to our callback hell
+function getUserPromise(id) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("User fetched:", id);
+            resolve({ id: id, name: "Shah Zeb" });
+        }, 1000);
+    });
+}
+
+function getPostsPromise(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Posts fetched for user:", userId);
+            resolve(["Post1", "Post2", "Post3"]);
+        }, 1000);
+    });
+}
+
+function getCommentsPromise(post) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`Comments for ${post}: ["Nice!", "Great!"]`);
+            resolve();
+        }, 1000);
+    });
+};
+
+
+// Task: chain promises here to avoid callback hell
+getUserPromise(1)
+.then((user)=>{
+    console.log("User ", user);
+    return getPostsPromise(user.id);
+})
+.then((posts)=>{
+    console.log("posts", posts);
+    return getCommentsPromise(posts[0]);
+})
+.then(()=>{
+    console.log("All tasks completed");
+})
+.catch((erro)=>{
+    console.log(`erro occured on the above code ${erro}`)
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
